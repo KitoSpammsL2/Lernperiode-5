@@ -15,6 +15,9 @@ Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten ode
 ![Screenshot 2025-05-02 111300](https://github.com/user-attachments/assets/70cde90a-7f2b-4334-9ccd-d8d5da9ace44)
 ![Screenshot 2025-05-02 111318](https://github.com/user-attachments/assets/cb2d779f-c38a-4130-b9e7-6cc572ce96f9)
 
+<img src="https://github.com/user-attachments/assets/70cde90a-7f2b-4334-9ccd-d8d5da9ace44" width="480">
+<img src="https://github.com/user-attachments/assets/cb2d779f-c38a-4130-b9e7-6cc572ce96f9" width="480">
+
 
 ## 9.5 Kernfunktionalität
 - [ ] Man kann das Spiel speichern.
