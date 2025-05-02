@@ -14,7 +14,6 @@ In der Lernperiode 4 habe ich ein Schachspiel programmiert und möchte in dieser
 Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten oder ein gespeichertes Spiel fortsetzen kann. Unter dem Schachbrett habe ich zwei zusätzliche Buttons eingefügt: Der erste Button dient dazu, zur Startseite zurückzukehren, und der zweite Button ermöglicht das Speichern des Spiels. Anschließend habe ich eine neue Datenbank erstellt und mit meinem Projekt verbunden. Dafür musste ich einige Dinge herunterladen. Ich habe auch mit dem Speichern des Spielstands begonnen, bin mir jedoch noch nicht sicher, ob es wirklich funktioniert hat.
 
 <img src="https://github.com/user-attachments/assets/70cde90a-7f2b-4334-9ccd-d8d5da9ace44" width="280">
-
 <img src="https://github.com/user-attachments/assets/cb2d779f-c38a-4130-b9e7-6cc572ce96f9" width="280">
 
 
