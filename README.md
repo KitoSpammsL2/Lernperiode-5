@@ -15,7 +15,7 @@ Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten ode
 
       
 <img src="https://github.com/user-attachments/assets/70cde90a-7f2b-4334-9ccd-d8d5da9ace44" width="280">
-
+<img src="https://github.com/user-attachments/assets/70cde90a-7f2b-4334-9ccd-d8d5da9ace44" width="280">
 
 
 ## 9.5 Kernfunktionalität
