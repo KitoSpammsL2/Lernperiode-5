@@ -24,7 +24,7 @@ Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten ode
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
-16.5 Kernfunktionalität und Ausbau
+## 16.5 Kernfunktionalität und Ausbau
 [ ] ...
 [ ] ...
 [ ] ...
@@ -33,7 +33,7 @@ Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten ode
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
-23.5 Abschluss
+## 23.5 Abschluss
 [ ] ...
 [ ] ... (falls Ihnen nichts einfällt: Können Sie mit einem PowerShell-Skript von Ihrer Datenbank regelmäßig ein backup erstellen?)
 [ ] Reflexion über Ihre Arbeitsweise
