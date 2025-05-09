@@ -19,18 +19,19 @@ Heute habe ich eine Startseite erstellt, auf der man ein neues Spiel starten ode
 
 
 ## 9.5 Kernfunktionalität
-- [ ] Man kann das Spiel speichern.
-- [ ] Man kann das Spiel wieder abrufen.
-- [ ] Startseite schöner machen. 
-✍️ Heute habe ich... (50-100 Wörter)
+- [x] Man kann das Spiel speichern.
+- [x] Man kann das Spiel wieder abrufen.
+- [ ] Startseite schöner machen.
 
-☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
+Heute war ein richtig guter Tag! Ich habe fast alles geschafft, was ich mir vorgenommen hatte. Ich kann jetzt meinen Spielstand im SQL-Manager speichern und wieder abrufen, wenn ich auf den Button ‚Spiel laden‘ klicke. Es war ziemlich schwer und hat viele Nerven gekostet, aber jetzt will ich nächste Woche vielleicht noch ein bisschen an der Optik feilen und mein Schachspiel weiter verbessern. 
+
+
 
 ## 16.5 Kernfunktionalität und Ausbau
-[ ] ...
-[ ] ...
-[ ] ...
-[ ] ...
+[ ] Optik von Startbildschirm vrbessern
+[ ] Spielbrett farbig machen
+[ ] Bauer kann promoten
+[ ] Enpasant
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
