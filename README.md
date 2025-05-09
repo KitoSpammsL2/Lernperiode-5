@@ -28,10 +28,21 @@ Heute war ein richtig guter Tag! Ich habe fast alles geschafft, was ich mir vorg
 
 
 ## 16.5 Kernfunktionalität und Ausbau
-[ ] Optik von Startbildschirm vrbessern
-[ ] Spielbrett farbig machen
-[ ] Bauer kann promoten
-[ ] Enpasant
+
+Optik
+- [ ] Optik von Startbildschirm vrbessern
+- [ ] Spielbrett farbig machen
+- [ ] Hervorhebung möglicher Züge
+
+Logisch
+- [ ] En Passant
+- [ ] Schachmatt erkennen
+- [ ] Rochade
+- [ ] Bauernumwandlung
+- [ ] Zug-Historie anzeigen
+- [ ] Mehrere Spielstände verwalten
+- [ ] Spiel gegen KI
+
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
