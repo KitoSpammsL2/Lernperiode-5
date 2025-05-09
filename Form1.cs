@@ -19,11 +19,14 @@ namespace TheFinalChess
 
         string connectionString = "Server=KAITO\\KAITO;Database=ChessGameDB;Trusted_Connection=True;";
 
+        private StartMenu startMenuForm;
 
         public Form1()
         {
             InitializeComponent();
 
+
+            startMenuForm = new StartMenu();
 
             whitePawnImage = LoadTransparentImage(@"C:\Users\kaito\source\repos\TheFinalChess\TheFinalChess\Resources\pawn-white-chess-piece-11532856224alv1lwm9ml.png");
             blackPawnImage = LoadTransparentImage(@"C:\Users\kaito\source\repos\TheFinalChess\TheFinalChess\Resources\awn-chess-piece-pawn-chess-piece-transparent-11563391176oxnhiiocwr.png");
@@ -446,7 +449,10 @@ namespace TheFinalChess
             from.Tag = null;
         }
 
-        private void btnBackToMenu_Click(object sender, EventArgs e)
+
+
+
+        private void btnBackToMenu_Click_1(object sender, EventArgs e)
         {
             StartMenu menu = new StartMenu();
             menu.Show();
@@ -455,62 +461,240 @@ namespace TheFinalChess
 
 
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private void BtnSave_Click(object sender, EventArgs e)
         {
-            List<FigurenPosition> positionen = new List<FigurenPosition>();
+            string connectionString = "Server=KAITO\\KAITO;Database=ChessGameDB;Trusted_Connection=True;";
 
-            foreach (Control c in this.Controls)
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                if (c is Button btn && btn.Name.StartsWith("btn"))
-                {
-                    string position = btn.Name.Substring(3); // z.B. "A1"
-                    string figur = btn.Tag?.ToString(); // z.B. "whitePawn", "blackKing", etc.
+                connection.Open();
 
-                    if (!string.IsNullOrWhiteSpace(figur))
+                // Bestehende Daten löschen
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM ChessBoardState", connection);
+                deleteCommand.ExecuteNonQuery();
+
+                // Alle Buttons von A1 bis H8 durchgehen
+                for (char col = 'A'; col <= 'H'; col++)
+                {
+                    for (int row = 1; row <= 8; row++)
                     {
-                        positionen.Add(new FigurenPosition
+                        string feldname = $"btn{col}{row}";
+                        Control[] controls = this.Controls.Find(feldname, true);
+
+                        if (controls.Length > 0 && controls[0] is Button button)
                         {
-                            Position = position,
-                            Figur = figur
-                        });
+                            string inhalt = button.Tag?.ToString() ?? "";
+
+
+                            SqlCommand insertCommand = new SqlCommand("INSERT INTO ChessBoardState (Feld, Inhalt) VALUES (@Feld, @Inhalt)", connection);
+                            insertCommand.Parameters.AddWithValue("@Feld", $"{col}{row}");
+                            insertCommand.Parameters.AddWithValue("@Inhalt", inhalt);
+                            insertCommand.ExecuteNonQuery();
+                        }
+                    }
+                }
+
+                MessageBox.Show("Spielstand erfolgreich gespeichert.");
+            }
+        }
+
+
+
+
+
+
+        public void SetFigureOnBoard(string position, string figurName)
+        {
+            Button button = GetButtonByPosition(position);
+            if (button != null)
+            {
+                // Füge das passende Bild basierend auf dem Figurennamen hinzu
+                string imagePath = $"path_to_images/{figurName}.png"; // Der Pfad zum Bild der Figur
+                button.BackgroundImage = Image.FromFile(imagePath);
+                button.BackgroundImageLayout = ImageLayout.Stretch;
+            }
+        }
+
+
+        public void LoadGame()
+        {
+            // Leere das Schachbrett, bevor das gespeicherte Spiel geladen wird
+            ClearBoard();
+
+            // SQL-Abfrage, um die gespeicherten Figuren zu holen
+            string query = "SELECT Feld, Inhalt FROM ChessBoardState";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                // Gehe durch jede Zeile der Datenbank und setze die gespeicherten Figuren auf das Schachbrett
+                while (reader.Read())
+                {
+                    string field = reader["Feld"].ToString();
+                    string content = reader["Inhalt"].ToString();
+
+                    // Suche den Button anhand des Namens
+                    Button btn = Controls.Find("btn" + field, true).FirstOrDefault() as Button;
+                    if (btn != null && !string.IsNullOrEmpty(content))
+                    {
+                        // Setze das Hintergrundbild basierend auf dem gespeicherten Inhalt
+                        switch (content)
+                        {
+                            case "whitePawn":
+                                btn.BackgroundImage = whitePawnImage;
+                                break;
+                            case "blackPawn":
+                                btn.BackgroundImage = blackPawnImage;
+                                break;
+                            case "whiteRook":
+                                btn.BackgroundImage = whiteRookImage;
+                                break;
+                            case "blackRook":
+                                btn.BackgroundImage = blackRookImage;
+                                break;
+                            case "whiteKnight":
+                                btn.BackgroundImage = whiteKnightImage;
+                                break;
+                            case "blackKnight":
+                                btn.BackgroundImage = blackKnightImage;
+                                break;
+                            case "whiteBishop":
+                                btn.BackgroundImage = whiteBishopImage;
+                                break;
+                            case "blackBishop":
+                                btn.BackgroundImage = blackBishopImage;
+                                break;
+                            case "whiteQueen":
+                                btn.BackgroundImage = whiteQueenImage;
+                                break;
+                            case "blackQueen":
+                                btn.BackgroundImage = blackQueenImage;
+                                break;
+                            case "whiteKing":
+                                btn.BackgroundImage = whiteKingImage;
+                                break;
+                            case "blackKing":
+                                btn.BackgroundImage = blackKingImage;
+                                break;
+                            default:
+                                btn.BackgroundImage = null;
+                                break;
+                        }
+
+                        btn.BackgroundImageLayout = ImageLayout.Stretch;
+                    }
+                }
+            }
+        }
+
+
+
+
+        
+        private void ClearBoard()
+        {
+            // Alle Buttons von A1 bis H8 durchgehen
+            for (char col = 'A'; col <= 'H'; col++)
+            {
+                for (int row = 1; row <= 8; row++)
+                {
+                    string feldname = $"btn{col}{row}";
+                    Control[] controls = this.Controls.Find(feldname, true);
+
+                    if (controls.Length > 0 && controls[0] is Button button)
+                    {
+                        // Setze den Hintergrund des Buttons zurück, um das Schachbrett zu leeren
+                        button.BackgroundImage = null;
+                        button.Tag = null;  // Setzt das Tag auf null, um die gespeicherte Figur zu entfernen
                     }
                 }
             }
 
-            string json = JsonConvert.SerializeObject(positionen);
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                string query = "INSERT INTO Savegames (Spielstand) VALUES (@json)";
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@json", json);
-                    command.ExecuteNonQuery();
-                }
-            }
-
-            MessageBox.Show("Spiel erfolgreich gespeichert.");
         }
-        private void SaveGame(string gameState)
+
+
+
+        // Hilfsmethode, um den Button basierend auf der Position zu erhalten
+        private Button GetButtonByPosition(string position)
         {
-            string connectionString = "Server=KAITO/KAITO;Database=ChessGameDB;Trusted_Connection=True;";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            switch (position)
             {
-                connection.Open();
-
-                string query = "INSERT INTO GameStates (GameState) VALUES (@GameState)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@GameState", gameState);
-                    command.ExecuteNonQuery();
-                }
+                case "A1": return btnA1;
+                case "A2": return btnA2;
+                case "A3": return btnA3;
+                case "A4": return btnA4;
+                case "A5": return btnA5;
+                case "A6": return btnA6;
+                case "A7": return btnA7;
+                case "A8": return btnA8;
+                case "B1": return btnB1;
+                case "B2": return btnB2;
+                case "B3": return btnB3;
+                case "B4": return btnB4;
+                case "B5": return btnB5;
+                case "B6": return btnB6;
+                case "B7": return btnB7;
+                case "B8": return btnB8;
+                case "C1": return btnC1;
+                case "C2": return btnC2;
+                case "C3": return btnC3;
+                case "C4": return btnC4;
+                case "C5": return btnC5;
+                case "C6": return btnC6;
+                case "C7": return btnC7;
+                case "C8": return btnC8;
+                case "D1": return btnD1;
+                case "D2": return btnD2;
+                case "D3": return btnD3;
+                case "D4": return btnD4;
+                case "D5": return btnD5;
+                case "D6": return btnD6;
+                case "D7": return btnD7;
+                case "D8": return btnD8;
+                case "E1": return btnE1;
+                case "E2": return btnE2;
+                case "E3": return btnE3;
+                case "E4": return btnE4;
+                case "E5": return btnE5;
+                case "E6": return btnE6;
+                case "E7": return btnE7;
+                case "E8": return btnE8;
+                case "F1": return btnF1;
+                case "F2": return btnF2;
+                case "F3": return btnF3;
+                case "F4": return btnF4;
+                case "F5": return btnF5;
+                case "F6": return btnF6;
+                case "F7": return btnF7;
+                case "F8": return btnF8;
+                case "G1": return btnG1;
+                case "G2": return btnG2;
+                case "G3": return btnG3;
+                case "G4": return btnG4;
+                case "G5": return btnG5;
+                case "G6": return btnG6;
+                case "G7": return btnG7;
+                case "G8": return btnG8;
+                case "H1": return btnH1;
+                case "H2": return btnH2;
+                case "H3": return btnH3;
+                case "H4": return btnH4;
+                case "H5": return btnH5;
+                case "H6": return btnH6;
+                case "H7": return btnH7;
+                case "H8": return btnH8;
+                default: return null;
             }
         }
 
-
+        private void Lösche_Click(object sender, EventArgs e)
+        {
+            ClearBoard();
+        }
     }
 
     public class FigurenPosition

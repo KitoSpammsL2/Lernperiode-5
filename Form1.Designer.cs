@@ -94,7 +94,7 @@
             btnA8 = new Button();
             btnF7 = new Button();
             btnBackToMenu = new Button();
-            btnSave = new Button();
+            BtnSave = new Button();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -966,26 +966,26 @@
             btnBackToMenu.Name = "btnBackToMenu";
             btnBackToMenu.Size = new Size(297, 64);
             btnBackToMenu.TabIndex = 1;
-            btnBackToMenu.Text = "Zurück zum Menü";
+            btnBackToMenu.Text = "Zum Menu";
             btnBackToMenu.UseVisualStyleBackColor = true;
-            btnBackToMenu.Click += btnBackToMenu_Click;
+            btnBackToMenu.Click += btnBackToMenu_Click_1;
             // 
-            // btnSave
+            // BtnSave
             // 
-            btnSave.Location = new Point(303, 609);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(294, 61);
-            btnSave.TabIndex = 2;
-            btnSave.Text = "Speichern";
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
+            BtnSave.Location = new Point(303, 603);
+            BtnSave.Name = "BtnSave";
+            BtnSave.Size = new Size(297, 67);
+            BtnSave.TabIndex = 2;
+            BtnSave.Text = "Speichern";
+            BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.Click += BtnSave_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(603, 673);
-            Controls.Add(btnSave);
+            ClientSize = new Size(605, 672);
+            Controls.Add(BtnSave);
             Controls.Add(btnBackToMenu);
             Controls.Add(tableLayoutPanel1);
             Name = "Form1";
@@ -1064,6 +1064,7 @@
         private Button btnE2;
         private Button btnD2;
         private Button btnBackToMenu;
-        private Button btnSave;
+        private Button BtnSave;
+        private Button Lösche;
     }
 }
