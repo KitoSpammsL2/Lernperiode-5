@@ -30,14 +30,14 @@ Heute war ein richtig guter Tag! Ich habe fast alles geschafft, was ich mir vorg
 ## 16.5 Kernfunktionalität und Ausbau
 
 Optik
-- [ ] Optik von Startbildschirm vrbessern
+- [x] Optik von Startbildschirm vrbessern
 - [ ] Spielbrett farbig machen
 - [ ] Hervorhebung möglicher Züge
 
 Logisch
 - [ ] En Passant
-- [ ] Timer
-- [ ] Schachmatt erkennen
+- [x] Timer(Angefangen)
+- [x] Schachmatt erkennen(Angefangen)
 - [ ] Rochade
 - [ ] Bauernumwandlung
 - [ ] Zug-Historie anzeigen
