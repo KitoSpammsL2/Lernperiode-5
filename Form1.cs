@@ -206,7 +206,7 @@ namespace TheFinalChess
                 }
                 else
                 {
-                    if (IsEnemyPiece(clickedButton))
+                    if (IsEnemyPiece(selectedButton, clickedButton))
                     {
                         MovePiece(selectedButton, clickedButton);
                         SwitchPlayer();
@@ -229,16 +229,21 @@ namespace TheFinalChess
             }
         }
 
-        private bool IsEnemyPiece(Button button)
+        private bool IsEnemyPiece(Button from, Button to)
         {
-            if (button.Tag == null || selectedButton == null) return false;
+            if (from.Tag == null || to.Tag == null) return false;
 
-            string selectedTag = selectedButton.Tag.ToString();
-            string clickedTag = button.Tag.ToString();
+            string fromPiece = from.Tag.ToString(); // z. B. "white_King"
+            string toPiece = to.Tag.ToString();     // z. B. "black_Pawn"
 
-            return (selectedTag.Contains("white") && clickedTag.Contains("black")) ||
-                   (selectedTag.Contains("black") && clickedTag.Contains("white"));
+            // Farbe extrahieren (vor dem "_")
+            string fromColor = fromPiece.Split('_')[0];
+            string toColor = toPiece.Split('_')[0];
+
+            return fromColor != toColor; // true, wenn gegnerische Farbe
         }
+
+
 
 
 
@@ -283,7 +288,9 @@ namespace TheFinalChess
             }
         }
 
-        private bool IsValidKingMove(Button from, Button to)
+
+
+            private bool IsValidKingMove(Button from, Button to)
         {
             string fromName = from.Name;
             string toName = to.Name;
@@ -508,8 +515,7 @@ namespace TheFinalChess
             Button button = GetButtonByPosition(position);
             if (button != null)
             {
-                // Füge das passende Bild basierend auf dem Figurennamen hinzu
-                string imagePath = $"path_to_images/{figurName}.png"; // Der Pfad zum Bild der Figur
+                string imagePath = $"path_to_images/{figurName}.png";
                 button.BackgroundImage = Image.FromFile(imagePath);
                 button.BackgroundImageLayout = ImageLayout.Stretch;
             }
@@ -518,10 +524,8 @@ namespace TheFinalChess
 
         public void LoadGame()
         {
-            // Leere das Schachbrett, bevor das gespeicherte Spiel geladen wird
             ClearBoard();
 
-            // SQL-Abfrage, um die gespeicherten Figuren zu holen
             string query = "SELECT Feld, Inhalt FROM ChessBoardState";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -531,17 +535,14 @@ namespace TheFinalChess
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                // Gehe durch jede Zeile der Datenbank und setze die gespeicherten Figuren auf das Schachbrett
                 while (reader.Read())
                 {
                     string field = reader["Feld"].ToString();
                     string content = reader["Inhalt"].ToString();
 
-                    // Suche den Button anhand des Namens
                     Button btn = Controls.Find("btn" + field, true).FirstOrDefault() as Button;
                     if (btn != null && !string.IsNullOrEmpty(content))
                     {
-                        // Setze das Hintergrundbild basierend auf dem gespeicherten Inhalt
                         switch (content)
                         {
                             case "whitePawn":
@@ -594,10 +595,9 @@ namespace TheFinalChess
 
 
 
-        
+
         private void ClearBoard()
         {
-            // Alle Buttons von A1 bis H8 durchgehen
             for (char col = 'A'; col <= 'H'; col++)
             {
                 for (int row = 1; row <= 8; row++)
@@ -607,9 +607,8 @@ namespace TheFinalChess
 
                     if (controls.Length > 0 && controls[0] is Button button)
                     {
-                        // Setze den Hintergrund des Buttons zurück, um das Schachbrett zu leeren
                         button.BackgroundImage = null;
-                        button.Tag = null;  // Setzt das Tag auf null, um die gespeicherte Figur zu entfernen
+                        button.Tag = null;
                     }
                 }
             }
@@ -617,8 +616,6 @@ namespace TheFinalChess
         }
 
 
-
-        // Hilfsmethode, um den Button basierend auf der Position zu erhalten
         private Button GetButtonByPosition(string position)
         {
             switch (position)
@@ -695,6 +692,201 @@ namespace TheFinalChess
         {
             ClearBoard();
         }
+
+
+        private Button FindKing(string color)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button btn && btn.Tag != null && btn.Tag.ToString() == $"{color}King")
+                {
+                    return btn;
+                }
+            }
+            return null;
+        }
+
+        private bool HasLegalMoves(string color)
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button from && from.Tag != null && from.Tag.ToString().StartsWith(color))
+                {
+                    foreach (Control target in this.Controls)
+                    {
+                        if (target is Button to && from != to)
+                        {
+                            if (IsValidMove(from, to))
+                            {
+                                var tempImage = to.BackgroundImage;
+                                var tempTag = to.Tag;
+
+                                to.BackgroundImage = from.BackgroundImage;
+                                to.Tag = from.Tag;
+                                from.BackgroundImage = null;
+                                from.Tag = null;
+
+                                bool inCheck = IsKingInCheck(color);
+
+                                from.BackgroundImage = to.BackgroundImage;
+                                from.Tag = to.Tag;
+                                to.BackgroundImage = tempImage;
+                                to.Tag = tempTag;
+
+                                if (!inCheck)
+                                    return true;
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+
+        private bool IsCheckmate()
+        {
+            string enemyKingTag = currentPlayer == "white" ? "blackKing" : "whiteKing";
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button btn && btn.Tag != null && btn.Tag.ToString() == enemyKingTag)
+                {
+                    return false;
+                }
+            }
+
+            return true; 
+        }
+
+
+
+
+
+
+
+        private bool IsValidMove(Button from, Button to)
+        {
+            if (from.Tag == null) return false;
+            string piece = from.Tag.ToString();
+
+            if (to.Tag != null && !IsEnemyPiece(from, to)) return false;
+
+            if (piece.Contains("King")) return IsValidKingMove(from, to);
+
+
+            return false;
+        }
+
+
+        private bool IsKingInCheck(string currentPlayerColor)
+        {
+            Button kingButton = null;
+
+            // 1. König finden
+            foreach (Button btn in GetAllBoardButtons())
+            {
+                if (btn.BackgroundImage != null &&
+                    btn.Tag != null &&
+                    btn.Tag.ToString() == currentPlayerColor + "_King")
+                {
+                    kingButton = btn;
+                    break;
+                }
+            }
+
+            if (kingButton == null)
+                return false;
+
+            foreach (Button btn in GetAllBoardButtons())
+            {
+                if (btn.BackgroundImage != null &&
+                    btn.Tag != null &&
+                    btn.Tag.ToString().StartsWith(OpponentColor(currentPlayerColor)))
+                {
+                    if (IsValidMove(btn, kingButton))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+
+        private string OpponentColor(string color)
+        {
+            return color == "White" ? "Black" : "White";
+        }
+
+
+        private bool HasAnyValidMove(string currentPlayerColor)
+        {
+            foreach (Button from in GetAllBoardButtons())
+            {
+                if (from.BackgroundImage != null &&
+                    from.Tag != null &&
+                    from.Tag.ToString().StartsWith(currentPlayerColor))
+                {
+                    foreach (Button to in GetAllBoardButtons())
+                    {
+                        if (from != to && IsValidMove(from, to))
+                        {
+                            // Zug testen
+                            Image savedImageTo = to.BackgroundImage;
+                            object savedTagTo = to.Tag;
+
+                            to.BackgroundImage = from.BackgroundImage;
+                            to.Tag = from.Tag;
+                            from.BackgroundImage = null;
+                            from.Tag = null;
+
+                            bool kingInCheck = IsKingInCheck(currentPlayerColor);
+
+                            // Rückgängig machen
+                            from.BackgroundImage = to.BackgroundImage;
+                            from.Tag = to.Tag;
+                            to.BackgroundImage = savedImageTo;
+                            to.Tag = savedTagTo;
+
+                            if (!kingInCheck)
+                                return true;
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+
+
+        private List<Button> GetAllBoardButtons()
+        {
+            List<Button> buttons = new List<Button>();
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button btn && btn.Name.StartsWith("btn"))
+                {
+                    buttons.Add(btn);
+                }
+            }
+
+            return buttons;
+        }
+
+
+
+        private void DisableBoard()
+        {
+            foreach (Button btn in GetAllBoardButtons())
+            {
+                btn.Enabled = false;
+            }
+        }
+
+
     }
 
     public class FigurenPosition

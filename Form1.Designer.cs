@@ -962,28 +962,35 @@
             // 
             // btnBackToMenu
             // 
+            btnBackToMenu.BackColor = SystemColors.Highlight;
+            btnBackToMenu.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnBackToMenu.ForeColor = SystemColors.ControlLightLight;
             btnBackToMenu.Location = new Point(0, 606);
             btnBackToMenu.Name = "btnBackToMenu";
             btnBackToMenu.Size = new Size(297, 64);
             btnBackToMenu.TabIndex = 1;
             btnBackToMenu.Text = "Zum Menu";
-            btnBackToMenu.UseVisualStyleBackColor = true;
+            btnBackToMenu.UseVisualStyleBackColor = false;
             btnBackToMenu.Click += btnBackToMenu_Click_1;
             // 
             // BtnSave
             // 
+            BtnSave.BackColor = SystemColors.ActiveCaption;
+            BtnSave.Font = new Font("Arial Rounded MT Bold", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            BtnSave.ForeColor = SystemColors.ControlLightLight;
             BtnSave.Location = new Point(303, 603);
             BtnSave.Name = "BtnSave";
             BtnSave.Size = new Size(297, 67);
             BtnSave.TabIndex = 2;
             BtnSave.Text = "Speichern";
-            BtnSave.UseVisualStyleBackColor = true;
+            BtnSave.UseVisualStyleBackColor = false;
             BtnSave.Click += BtnSave_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(605, 672);
             Controls.Add(BtnSave);
             Controls.Add(btnBackToMenu);
