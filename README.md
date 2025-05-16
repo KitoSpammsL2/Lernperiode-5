@@ -29,6 +29,17 @@ Heute war ein richtig guter Tag! Ich habe fast alles geschafft, was ich mir vorg
 
 ## 16.5 Kernfunktionalität und Ausbau
 
+Heute wollte ich zuerst damit anfangen, das Schachmatt zu erkennen, damit ich nicht immer den König schlagen muss. Allerdings war das viel schwieriger als gedacht. Ich habe ziemlich viel Code dafür geschrieben, aber es gab ständig irgendwelche Fehler, und am Ende hat es leider nicht funktioniert. Das hat mich ziemlich frustriert.
+
+Danach habe ich etwas gemacht, bei dem ich mir sicher war, dass es klappt – einfach, um ein kleines Erfolgserlebnis zu haben, haha. Ich habe mit dem Design begonnen und bin ziemlich weit gekommen. Im Vergleich zum vorherigen Zustand bin ich sehr zufrieden damit.
+
+Anschliessend habe ich noch einmal kurz am Schachmatt-Erkennen gearbeitet, aber es hat immer noch nicht funktioniert. Also habe ich es erst mal aufgegeben und mit dem Timer angefangen. Dafür habe ich ein neues Fenster geöffnet und dort ein bisschen am Design gearbeitet. Beim nächsten Mal möchte ich den Timer fertigstellen.
+
+
+<img src="https://github.com/user-attachments/assets/03187b51-a167-4ed6-acea-d4908dfb3a34" width="280">
+<img src="https://github.com/user-attachments/assets/773a2640-150a-417c-80e9-da89e1667f8b" width="280">
+<img src="https://github.com/user-attachments/assets/dda7289a-1904-420c-a576-f9076281b068" width="280">
+
 Optik
 - [x] Optik von Startbildschirm vrbessern
 - [ ] Spielbrett farbig machen
@@ -42,18 +53,32 @@ Logisch
 - [ ] Bauernumwandlung
 - [ ] Zug-Historie anzeigen
 - [ ] Mehrere Spielstände verwalten
-- [ ] Spiel gegen KI
+
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
 ## 23.5 Abschluss
-[ ] ...
-[ ] ... (falls Ihnen nichts einfällt: Können Sie mit einem PowerShell-Skript von Ihrer Datenbank regelmäßig ein backup erstellen?)
-[ ] Reflexion über Ihre Arbeitsweise
-[ ] Beschreibung des fertigen Projekts mit .gif etc.
-✍️ Heute habe ich... (50-100 Wörter)
+
+
+Optik
+- [ ] Spielbrett farbig machen
+- [ ] Hervorhebung möglicher Züge
+
+Logisch
+- [ ] En Passant
+- [ ] Timer(Angefangen)
+    - [ ] Ich kann die Verschiednen Zeiten auswählen
+    - [ ] Ich habe es mit dem Spiel verbunden und die Zeit läuft nach jedem spielzug weiter
+    - [ ] Ich kann eine eigene Zeit auswählen
+           
+- [ ] Schachmatt erkennen(Angefangen)
+- [ ] Rochade
+- [ ] Bauernumwandlung
+- [ ] Zug-Historie anzeigen
+- [ ] Mehrere Spielstände verwalten
+
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
