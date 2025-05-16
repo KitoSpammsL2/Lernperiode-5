@@ -36,6 +36,7 @@ Optik
 
 Logisch
 - [ ] En Passant
+- [ ] Timer
 - [ ] Schachmatt erkennen
 - [ ] Rochade
 - [ ] Bauernumwandlung
