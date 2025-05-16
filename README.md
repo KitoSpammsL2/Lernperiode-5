@@ -55,13 +55,7 @@ Logisch
 - [ ] Zug-Historie anzeigen
 - [ ] Mehrere Spielstände verwalten
 
-
-✍️ Heute habe ich... (50-100 Wörter)
-
-☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
-
 ## 23.5 Abschluss
-
 
 Optik
 - [ ] Spielbrett farbig machen
