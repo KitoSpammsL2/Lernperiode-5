@@ -37,8 +37,8 @@ Anschliessend habe ich noch einmal kurz am Schachmatt-Erkennen gearbeitet, aber 
 
 
 <img src="https://github.com/user-attachments/assets/03187b51-a167-4ed6-acea-d4908dfb3a34" width="280">
-<img src="https://github.com/user-attachments/assets/773a2640-150a-417c-80e9-da89e1667f8b" width="280">
-<img src="https://github.com/user-attachments/assets/dda7289a-1904-420c-a576-f9076281b068" width="280">
+<img src="https://github.com/user-attachments/assets/773a2640-150a-417c-80e9-da89e1667f8b" width="250">
+<img src="https://github.com/user-attachments/assets/dda7289a-1904-420c-a576-f9076281b068" width="320">
 
 Optik
 - [x] Optik von Startbildschirm vrbessern
