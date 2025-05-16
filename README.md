@@ -36,8 +36,9 @@ Danach habe ich etwas gemacht, bei dem ich mir sicher war, dass es klappt – ei
 Anschliessend habe ich noch einmal kurz am Schachmatt-Erkennen gearbeitet, aber es hat immer noch nicht funktioniert. Also habe ich es erst mal aufgegeben und mit dem Timer angefangen. Dafür habe ich ein neues Fenster geöffnet und dort ein bisschen am Design gearbeitet. Beim nächsten Mal möchte ich den Timer fertigstellen.
 
 
+
 <img src="https://github.com/user-attachments/assets/03187b51-a167-4ed6-acea-d4908dfb3a34" width="305">
-<img src="https://github.com/user-attachments/assets/773a2640-150a-417c-80e9-da89e1667f8b" width="250">
+<img src="https://github.com/user-attachments/assets/908b3d08-5ed5-4466-a8b2-b84942ece672" width="250">
 <img src="https://github.com/user-attachments/assets/dda7289a-1904-420c-a576-f9076281b068" width="340">
 
 Optik
