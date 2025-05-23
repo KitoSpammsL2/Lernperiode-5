@@ -2,6 +2,15 @@
 
 2.5 bis 23.5
 
+## Fertige Projekt 
+
+In dieser Lernperiode habe ich mein Schachspiel weiter verbessert. Ich habe ein Startmenü hinzugefügt und ein Speichersystem für den Spielstand eingebaut. Hier könnt ihr sehen, wie ich das gemacht habe. Unten sind auch noch ein paar weitere Bilder zur Veranschaulichung.
+
+
+
+
+
+
 ## Grob-Planung
 Wie können Sie Ihr Projekt aus der Lernperiode 4 um eine Persistenz-Lösung erweitern? Was gibt es zu speichern, was für Tabellen brauchen Sie und wie muss der bestehende Code mit diesen interagieren?
 
