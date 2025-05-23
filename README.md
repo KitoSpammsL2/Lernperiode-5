@@ -57,6 +57,11 @@ Logisch
 
 ## 23.5 Abschluss
 
+Heute habe ich versucht, den Code zu verbessern, aber irgendwie habe ich das Schachspiel kaputt gemacht und kann mich auch nicht mehr mit dem SQL Server verbinden. Ich werde den neuen Code, den ich heute in einer eigenen Datei geschrieben habe, hochladen, aber nur diesen, weil ich die Datei wahrscheinlich wieder löschen werde. Vermutlich werde ich den alten Code wieder einfügen, weil dort noch alles funktioniert hat.
+
+Ich werde das Projekt in meiner Freizeit fertig machen und das dann in einem anderen Kapitel dokumentieren, wenn ich mal Zeit habe. Trotzdem freue ich mich schon sehr darauf, nächste Woche eine Webseite zu erstellen.
+
+
 Optik
 - [ ] Spielbrett farbig machen
 - [ ] Hervorhebung möglicher Züge
