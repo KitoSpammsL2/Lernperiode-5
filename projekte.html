@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Meine Projekte</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Portfolio</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Startseite</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section projekt-section">
+            <div class="container">
+               <div class="section-header">
+                    <div class="left">
+                        <a href="index.html" class="back-link">← Zurück zur Übersicht</a>
+                    </div>
+                    <div class="center">
+                        <h2 class="section-title">Meine Projekte</h2>
+                    </div>
+                    <div class="right"></div> 
+                </div>
+
+                <div class="skills-grid">
+
+                    <div class="skill-card fade-in visible" onclick="window.open('https://github.com/KitoSpammsL2', '_blank')"
+                        style="cursor: pointer;">
+                        <img src="GitHub-Logo.png" alt="GitHub" class="project-image" />
+                        <h3 class="skill-title">Mein GitHub</h3>
+                        <p class="skill-description">Hier findest du viele weitere Projekte, an denen ich arbeite oder geübt habe. Schau gern vorbei!</p>
+                    </div>
+                    <!-- Projekt 1 -->
+                    <div class="skill-card fade-in visible" onclick="window.location.href='schach.html'" style="cursor: pointer;">
+                        <img src="Schach1.png" alt="Schach Projekt" class="project-image" />
+                        <h3 class="skill-title">Schach</h3>
+                        <p class="skill-description">Das war mein erstes richtiges Projekt: ein Schachspiel, das ich über mehrere Monate mit C# WinForms programmiert habe.</p>
+                    </div>
+
+
+                    <!-- Projekt 2 -->
+                    <div class="skill-card fade-in visible" onclick="window.open('https://eloquent-toffee-8eff0f.netlify.app/', '_blank')" style="cursor: pointer;">
+                        <img src="Parum-website.png" alt="Parfum Webseite" class="project-image" />
+                        <h3 class="skill-title">Parfum-Webseite</h3>
+                        <p class="skill-description">Das hier ist meine LB. Es ist eine Parfum-Website, die mit HTML und CSS erstellt wurde.</p>
+                    </div>
+
+                    <!-- Projekt 3 -->
+                    <div class="skill-card fade-in visible">
+                        <img src="Cookie.png" alt="Cookie Clicker" class="project-image" />
+                        <h3 class="skill-title">Cookie Clicker</h3>
+                        <p class="skill-description">Das ist ein Cookie Clicker Prototyp, den ich in drei Wochen erstellt habe. Es war mein erstes WinForms-Projekt.</p>
+                    </div>
+                </div>
+
+               
+            </div>
+        </section>
+    </main>
+</body>
+</html>
